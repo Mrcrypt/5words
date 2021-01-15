@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package msgswap;
+option go_package = "github.com/Mrcrypt/5words/msgswap";
+
+import "domain/domain.proto";
+
+message Message {
+  bytes content = 1;
+  bytes topic = 2;
+  bytes topicID = 3;
+  bytes time = 4;
+
+  bytes reciever = 5;
+
+  domain.Address address = 10;
+  bytes signature = 9;
+}
+
+message EncryptedMessage {
+  bytes reciever = 1;
+  bytes encryptedKey = 2;
+  bytes message = 3;
+}

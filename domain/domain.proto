@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package domain;
+option go_package = "github.com/Mrcrypt/5words/domain";
+
+message Entry {
+  Address address = 1;
+  bytes pubRSAKey = 2;
+
+  map<string,string> values = 3;
+  repeated string peers = 4;
+
+  bytes signature = 5;
+}
+
+message Address {
+  bytes pubKey = 1;
+  uint64 nonce = 2;
+}

@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package msgswap;
+option go_package = "github.com/Mrcrypt/5words/msgswap";
+
+message NewFollower {
+  bytes reciever = 1;
+
+  bytes name = 2;
+  bytes nonce = 3;
+  bytes pubKey = 4;
+  bytes signature = 5;
+}

@@ -1,0 +1,5 @@
+bootstrappeers:
+  - /ip4/46.38.237.63/tcp/46229/p2p/12D3KooWP87nEeyfuMjVBTAjofYztBB8tDfPokPyoX5gF5ykVJaP
+storepath: ""
+port: 46229
+apiport: 9000
