@@ -146,6 +146,6 @@ func startWebView() {
 	w.SetTitle("5Words.io")
 	w.SetSize(800, 600, webview.HintNone)
 	w.Init(fmt.Sprintf(`var APIPort = %d;`, config.APIPort))
-	w.Navigate("http://127.0.0.1:8080")
+	w.Navigate(fmt.Sprintf("http://127.0.0.1:%d", config.APIPort))
 	w.Run()
 }

@@ -4,7 +4,6 @@
       <div class="messages">
 
         <new-message></new-message>
-        <new-following></new-following>
 
         <h2 class="mb-1 ml-4">Messages</h2>
         <v-list>
@@ -46,14 +45,12 @@
 import Vue from 'vue';
 import * as api from './apiHelper';api;
 
-import NewFollowing from './components/NewFollowing.vue';
 import NewMessage from './components/NewMessage.vue';
 
 export default Vue.extend({
   name: 'Postbox',
 
   components: {
-    NewFollowing,
     NewMessage,
   },
 

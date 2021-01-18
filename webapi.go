@@ -23,6 +23,8 @@ func startWebAPI() {
 
 	r.GlobalOPTIONS = http.HandlerFunc(allowCORS)
 
+	r.NotFound = http.FileServer(http.Dir("./webnode/dist"))
+
 	r.GET("/wordlist", wordList)
 
 	r.GET("/messages", messages)
@@ -167,7 +169,7 @@ func messages(w http.ResponseWriter, r *http.Request, ps httprouter.Params) {
 			"topic":   string(m.Topic),
 			"name":    string(sender),
 			"content": string(b),
-			"time":    string(msgTime.Format("Mon Jan 2 15:04")),
+			"time":    string(msgTime.Format("Mon, 2 Jan 06 15:04")),
 		})
 	}
 
