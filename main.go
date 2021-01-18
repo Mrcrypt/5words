@@ -12,18 +12,19 @@ import (
 	"google.golang.org/protobuf/proto"
 )
 
-var logger = log.Logger("CryPeer")
+var logger = log.Logger("5Words")
 
 var store *Store
 
 func main() {
-	log.SetLogLevel("CryPeer", "info")
+	log.SetLogLevel("5Words", "info")
 
 	//Flags
 	configPathF := flag.String("config", "config.yml", "Config Path")
 	debug := flag.Bool("debug", false, "")
 	table := flag.Bool("table", false, "")
-	gui := flag.Bool("gui", false, "")
+	gui := flag.Bool("gui", false, "Opens the GUI")
+	cli := flag.Bool("cli", false, "Opens the CLI")
 	bootstrap := flag.String("boot", "", "BootstrapPeer")
 	flag.Parse()
 
@@ -43,6 +44,7 @@ func main() {
 		storePath = config.StorePath
 	}
 	store = newStore(storePath)
+	defer store.db.Close()
 
 	//ONLY FOR TESTING
 	if bootstrap != nil && *bootstrap != "" {
@@ -128,12 +130,13 @@ func main() {
 	if config.APIPort != 0 {
 		go startWebAPI()
 	}
-	if *gui == false {
-		startCLI()
-	} else {
+	if *cli == true {
 		go startCLI()
-		startWebView()
 	}
+	if *gui == true {
+		go startWebView()
+	}
+	select {}
 }
 
 func startWebView() {
