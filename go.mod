@@ -28,10 +28,11 @@ require (
 	github.com/libp2p/go-netroute v0.1.4 // indirect
 	github.com/libp2p/go-sockaddr v0.1.0 // indirect
 	github.com/libp2p/go-yamux v1.4.0 // indirect
+	github.com/markbates/pkger v0.17.1
 	github.com/mattn/go-colorable v0.1.8 // indirect
 	github.com/multiformats/go-multiaddr v0.3.1
 	github.com/multiformats/go-varint v0.0.6
-	github.com/webview/webview v0.0.0-20200724072439-e0c01595b361
+	github.com/webview/webview v0.0.0-20210115112615-0f8224c31374
 	github.com/whyrusleeping/base32 v0.0.0-20170828182744-c30ac30633cc
 	go.opencensus.io v0.22.5 // indirect
 	go.uber.org/multierr v1.6.0 // indirect
@@ -42,5 +43,5 @@ require (
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 	google.golang.org/grpc v1.31.1 // indirect
 	google.golang.org/protobuf v1.23.0
-	gopkg.in/yaml.v2 v2.2.4
+	gopkg.in/yaml.v2 v2.2.7
 )

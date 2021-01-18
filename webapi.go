@@ -15,6 +15,7 @@ import (
 	"github.com/Mrcrypt/5words/protoio"
 	"github.com/julienschmidt/httprouter"
 	"github.com/libp2p/go-libp2p-core/peer"
+	"github.com/markbates/pkger"
 	"google.golang.org/protobuf/proto"
 )
 
@@ -23,7 +24,7 @@ func startWebAPI() {
 
 	r.GlobalOPTIONS = http.HandlerFunc(allowCORS)
 
-	r.NotFound = http.FileServer(http.Dir("./webnode/dist"))
+	r.NotFound = http.FileServer(pkger.Dir("/webnode/dist"))
 
 	r.GET("/wordlist", wordList)
 
@@ -52,7 +53,11 @@ func startWebAPI() {
 		Handler: PreMiddleware{r},
 	}
 
-	srv.ListenAndServe()
+	err := srv.ListenAndServe()
+	if err != nil {
+		panic(err)
+	}
+
 }
 
 //PreMiddleware ...
