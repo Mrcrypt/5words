@@ -6,7 +6,7 @@ on:
 
 jobs:
 
-  build:
+  build-linux:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -20,7 +20,7 @@ jobs:
       run: sudo apt-get update && sudo apt-get install webkit2gtk-4.0
 
     - name: Build
-      run: go build -v . && ls -al
+      run: go build -v . -o 5words
 
     - name: Test
       run: go test -v .
@@ -29,3 +29,24 @@ jobs:
       with:
         name: 5words
         path: ./5words
+
+ build-windows:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.15
+
+    - name: Build
+      run: go build -v . -o 5words.exe
+
+    - name: Test
+      run: go test -v .
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: 5words.exe
+        path: ./5words.exe
