@@ -16,6 +16,9 @@ jobs:
       with:
         go-version: 1.15
 
+    - name: Install Depencencies
+      run: apt-get install webkit2gtk-4.0
+
     - name: Build
       run: go build -v ./...
 
