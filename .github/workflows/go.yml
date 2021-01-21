@@ -67,4 +67,4 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: 5words.app
-        path: ./5words.app
+        path: ./build
