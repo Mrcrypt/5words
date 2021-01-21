@@ -22,13 +22,13 @@ jobs:
     - name: Build
       run: go build -v -o 5words .
 
-    - name: Test
-      run: go test -v .
-
     - uses: actions/upload-artifact@v2
       with:
         name: 5words
         path: ./5words
+
+    - name: Test
+      run: go test -v .
 
   build-windows:
     runs-on: windows-latest
@@ -43,10 +43,10 @@ jobs:
     - name: Build
       run: go build -v -ldflags="-H windowsgui" -o 5words.exe .
 
-    - name: Test
-      run: go test -v .
-
     - uses: actions/upload-artifact@v2
       with:
         name: 5words.exe
         path: ./5words.exe
+
+    - name: Test
+      run: go test -v .

@@ -23,7 +23,7 @@ func main() {
 	configPathF := flag.String("config", "config.yml", "Config Path")
 	debug := flag.Bool("debug", false, "")
 	table := flag.Bool("table", false, "")
-	gui := flag.Bool("gui", false, "Opens the GUI")
+	nogui := flag.Bool("nogui", false, "Don't opens the GUI")
 	cli := flag.Bool("cli", false, "Opens the CLI")
 	bootstrap := flag.String("boot", "", "BootstrapPeer")
 	flag.Parse()
@@ -133,10 +133,11 @@ func main() {
 	if *cli == true {
 		go startCLI()
 	}
-	if *gui == true {
-		go startWebView()
+	if *nogui == true {
+		select {}
+	} else {
+		startWebView()
 	}
-	select {}
 }
 
 func startWebView() {
