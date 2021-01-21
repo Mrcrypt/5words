@@ -47,3 +47,24 @@ jobs:
       with:
         name: 5words.exe
         path: ./5words.exe
+
+  build-mac:
+    runs-on: macos-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.15
+
+    - name: Create Build dir
+      run: mkdir -p ./5words.app/Contents/MacOS/
+
+    - name: Build
+      run: go build -v -o ./5words.app/Contents/MacOS/5words .
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: 5words.app
+        path: ./5words.app
