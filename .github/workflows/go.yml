@@ -20,7 +20,7 @@ jobs:
       run: sudo apt-get update && sudo apt-get install webkit2gtk-4.0
 
     - name: Build
-      run: go build -v ./...
+      run: go build -v ./... && ls -al
 
     - name: Test
       run: go test -v ./...
