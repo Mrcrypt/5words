@@ -37,7 +37,13 @@ func main() {
 	//Node
 	ctx = context.Background()
 
-	loadConfig()
+	err := loadConfig()
+	if err != nil {
+		config.APIPort = 9000
+		config.Port = 42000
+		config.Relay = false
+		config.StorePath = "db"
+	}
 	//Database
 	storePath := "./db"
 	if config.StorePath != "" {

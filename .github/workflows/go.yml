@@ -47,6 +47,3 @@ jobs:
       with:
         name: 5words.exe
         path: ./5words.exe
-
-    - name: Test
-      run: go test -v .
