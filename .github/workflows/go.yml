@@ -30,7 +30,7 @@ jobs:
         name: 5words
         path: ./5words
 
- build-windows:
+  build-windows:
     runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
