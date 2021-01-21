@@ -28,4 +28,4 @@ jobs:
     - uses: actions/upload-artifact@v2
       with:
         name: 5words
-        path: linux/5words
+        path: ./5words
