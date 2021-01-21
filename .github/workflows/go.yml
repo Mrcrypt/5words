@@ -59,10 +59,10 @@ jobs:
         go-version: 1.15
 
     - name: Create Build dir
-      run: mkdir -p ./5words.app/Contents/MacOS/
+      run: mkdir -p ./build/5words.app/Contents/MacOS/
 
     - name: Build
-      run: go build -v -o ./5words.app/Contents/MacOS/5words .
+      run: go build -v -o ./build/5words.app/Contents/MacOS/5words .
 
     - uses: actions/upload-artifact@v2
       with:

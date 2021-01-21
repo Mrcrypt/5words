@@ -4,6 +4,7 @@ import (
 	"context"
 	"flag"
 	"fmt"
+	"runtime"
 	"time"
 
 	"github.com/Mrcrypt/5words/domain"
@@ -26,8 +27,9 @@ func main() {
 	nogui := flag.Bool("nogui", false, "Don't opens the GUI")
 	cli := flag.Bool("cli", false, "Opens the CLI")
 	bootstrap := flag.String("boot", "", "BootstrapPeer")
-	flag.Parse()
-
+	if runtime.GOOS != "darwin" {
+		flag.Parse()
+	}
 	configPath = *configPathF
 
 	if *debug {
