@@ -42,7 +42,6 @@ func main() {
 		config.APIPort = 9000
 		config.Port = 42000
 		config.Relay = false
-		config.StorePath = "db"
 	}
 	//Database
 	storePath := "./db"
