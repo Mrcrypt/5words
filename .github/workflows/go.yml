@@ -40,13 +40,16 @@ jobs:
       with:
         go-version: 1.15
 
+    - name: Create Build dir
+      run: mkdir -p ./build
+
     - name: Build
-      run: go build -v -ldflags="-H windowsgui" -o 5words.exe .
+      run: go build -v -ldflags="-H windowsgui" -o ./build/5words.exe .
 
     - uses: actions/upload-artifact@v2
       with:
-        name: 5words.exe
-        path: ./5words.exe
+        name: 5words_windows
+        path: ./build
 
   build-mac:
     runs-on: macos-latest
@@ -59,15 +62,15 @@ jobs:
         go-version: 1.15
 
     - name: Create Build dir
-      run: mkdir -p ./build/5words.app/Contents/MacOS/
+      run: mkdir -p ./5words.app/Contents/MacOS/
 
     - name: Build
-      run: go build -v -o ./build/5words.app/Contents/MacOS/5words .
+      run: go build -v -o ./5words.app/Contents/MacOS/5words .
 
     - name: Tar files
-      run: tar -cvf 5words.tar ./build
+      run: tar -cvf 5words.tar ./5words.app
 
     - uses: actions/upload-artifact@v2
       with:
-        name: 5words.tar
+        name: 5words.app.tar
         path: ./5words.tar
