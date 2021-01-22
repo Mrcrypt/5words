@@ -4,6 +4,7 @@ import (
 	"context"
 	"flag"
 	"fmt"
+	"os/user"
 	"runtime"
 	"time"
 
@@ -46,10 +47,21 @@ func main() {
 		config.Relay = false
 	}
 	//Database
-	storePath := "./db"
+	var storePath string
+	if runtime.GOOS == "darwin" {
+		user, err := user.Current()
+		if err != nil {
+			panic(err)
+		}
+		storePath = user.HomeDir + "/Library/Application Support/5words/"
+
+	} else {
+		storePath = "./db"
+	}
 	if config.StorePath != "" {
 		storePath = config.StorePath
 	}
+	fmt.Printf("storePath = %+v\n", storePath)
 	store = newStore(storePath)
 	defer store.db.Close()
 
