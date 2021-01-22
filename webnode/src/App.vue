@@ -36,7 +36,6 @@ export default Vue.extend({
 </script>
 
 <style>
-html { zoom: 1.5; }
 
 .menubar {
   height: 60px;
