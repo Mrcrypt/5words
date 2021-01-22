@@ -48,7 +48,7 @@ func main() {
 			panic(err)
 		}
 		storePath = user.HomeDir + "/Library/Application Support/5words/db"
-		os.MkdirAll(storePath, os.ModeDir)
+		os.MkdirAll(storePath, 0744)
 
 		configPath = user.HomeDir + "/Library/Application Support/5words/config.yml"
 	} else {
