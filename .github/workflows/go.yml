@@ -40,9 +40,6 @@ jobs:
       with:
         go-version: 1.15
 
-    - name: Create Build dir
-      run: mkdir -p ./build
-
     - name: Build
       run: go build -v -ldflags="-H windowsgui" -o ./build/5words.exe .
 
