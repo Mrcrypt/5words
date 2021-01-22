@@ -64,7 +64,10 @@ jobs:
     - name: Build
       run: go build -v -o ./build/5words.app/Contents/MacOS/5words .
 
+    - name: Tar files
+      run: tar -cvf 5words.tar ./build
+
     - uses: actions/upload-artifact@v2
       with:
-        name: 5words.app
-        path: ./build
+        name: 5words.tar
+        path: ./5words.tar
