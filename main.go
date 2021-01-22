@@ -4,6 +4,7 @@ import (
 	"context"
 	"flag"
 	"fmt"
+	"os"
 	"os/user"
 	"runtime"
 	"time"
@@ -47,6 +48,7 @@ func main() {
 			panic(err)
 		}
 		storePath = user.HomeDir + "/Library/Application Support/5words/db"
+		os.MkdirAll(storePath, os.ModeDir)
 
 		configPath = user.HomeDir + "/Library/Application Support/5words/config.yml"
 	} else {
