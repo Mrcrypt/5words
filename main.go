@@ -59,6 +59,9 @@ func main() {
 		config.APIPort = 9000
 		config.Port = 42000
 		config.Relay = false
+		config.BootstrapPeers = []string{
+			"/ip4/46.38.237.63/tcp/46229/p2p/12D3KooWP87nEeyfuMjVBTAjofYztBB8tDfPokPyoX5gF5ykVJaP",
+		}
 	}
 	//Database
 	if config.StorePath != "" {
