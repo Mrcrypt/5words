@@ -40,6 +40,18 @@ func main() {
 	//Node
 	ctx = context.Background()
 
+	var storePath string
+	if runtime.GOOS == "darwin" {
+		user, err := user.Current()
+		if err != nil {
+			panic(err)
+		}
+		storePath = user.HomeDir + "/Library/Application Support/5words/db"
+
+		configPath = user.HomeDir + "/Library/Application Support/5words/config.yml"
+	} else {
+		storePath = "./db"
+	}
 	err := loadConfig()
 	if err != nil {
 		config.APIPort = 9000
@@ -47,21 +59,9 @@ func main() {
 		config.Relay = false
 	}
 	//Database
-	var storePath string
-	if runtime.GOOS == "darwin" {
-		user, err := user.Current()
-		if err != nil {
-			panic(err)
-		}
-		storePath = user.HomeDir + "/Library/Application Support/5words/"
-
-	} else {
-		storePath = "./db"
-	}
 	if config.StorePath != "" {
 		storePath = config.StorePath
 	}
-	fmt.Printf("storePath = %+v\n", storePath)
 	store = newStore(storePath)
 	defer store.db.Close()
 
